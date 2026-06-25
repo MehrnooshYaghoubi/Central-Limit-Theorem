@@ -2,6 +2,8 @@
 
 A Python visualization toolkit that demonstrates the **Central Limit Theorem (CLT)** across five probability distributions. The tool produces a four-panel dashboard, prints a statistical summary to the console, and optionally renders a convergence animation.
 
+![Sample Visualization](clt.gif)
+
 ---
 
 ## What is the Central Limit Theorem?

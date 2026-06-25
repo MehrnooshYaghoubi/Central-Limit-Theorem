@@ -150,7 +150,7 @@ Every run prints a report to stdout:
 
 ## Sample Visualization
 
-![Sample Visualization](Figure_1.png)
+![Sample Visualization](Figure.png)
 
 ---
 
@@ -188,4 +188,4 @@ $$f(x;\,k,\theta) = \frac{x^{k-1}e^{-x/\theta}}{\theta^k\Gamma(k)}, \quad \mu = 
 
 $$f(x;\,\mu,\sigma) = \frac{1}{x\sigma\sqrt{2\pi}}\exp\!\left(-\frac{(\ln x - \mu)^2}{2\sigma^2}\right)$$
 
-$$\mathbb{E}[X] = e^{\mu + \sigma^2/2}, \quad \operatorname{Var}(X) = (e^{\sigma^2}-1)\,e^{2\mu+\sigma^2}$$
+$$\mathbb{E}[X] = e^{\mu + \sigma^2/2}, \quad \mathrm{Var}(X) = (e^{\sigma^2}-1)\,e^{2\mu+\sigma^2}$$

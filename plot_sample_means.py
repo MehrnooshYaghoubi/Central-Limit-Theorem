@@ -200,16 +200,17 @@ def plot_clt(
 
     _print_report(report, dist, n_samples, sample_size)
 
-    fig = plt.figure(figsize=(16, 9), facecolor=_BG_DARK)
+    fig = plt.figure(figsize=(17, 10), facecolor=_BG_DARK)
     gs = gridspec.GridSpec(
         2, 2, figure=fig,
-        hspace=0.45, wspace=0.35,
-        left=0.07, right=0.97, top=0.88, bottom=0.08,
+        hspace=0.52, wspace=0.38,
+        left=0.07, right=0.96, top=0.90, bottom=0.09,
     )
     ax_pop   = fig.add_subplot(gs[0, 0])
     ax_means = fig.add_subplot(gs[0, 1])
     ax_conv  = fig.add_subplot(gs[1, 0])
     ax_stats = fig.add_subplot(gs[1, 1])
+    ax_stats.set_facecolor(_BG_PANEL)
     ax_stats.axis("off")
 
     _style_axes([ax_pop, ax_means, ax_conv])
@@ -271,31 +272,32 @@ def plot_clt(
     ax_conv.legend(fontsize=9, framealpha=0.2, facecolor=_BG_PANEL, labelcolor="white")
 
     # ── Panel 4: statistics table ────────────────────────────────────────────
+    ax_stats.set_title("Statistical Summary", fontsize=13, pad=10, color="white")
     rows = [
-        ["Empirical Mean",  f"{report.empirical_mean:.4f}"],
-        ["Theoretical Mean",f"{report.theoretical_mean:.4f}"],
-        ["Empirical SEM",   f"{report.empirical_std:.4f}"],
-        ["Theoretical SEM", f"{report.theoretical_sem:.4f}"],
-        ["KS Statistic",    f"{report.ks_stat:.4f}"],
-        ["KS p-value",      f"{report.ks_pvalue:.4f}"],
-        ["Shapiro-Wilk W",  f"{report.shapiro_stat:.4f}"],
-        ["Shapiro-Wilk p",  f"{report.shapiro_pvalue:.4f}"],
-        ["Normality",       "✓ Passed" if report.normality_passed else "✗ Failed"],
+        ["Empirical Mean",   f"{report.empirical_mean:.4f}"],
+        ["Theoretical Mean", f"{report.theoretical_mean:.4f}"],
+        ["Empirical SEM",    f"{report.empirical_std:.4f}"],
+        ["Theoretical SEM",  f"{report.theoretical_sem:.4f}"],
+        ["KS Statistic",     f"{report.ks_stat:.4f}"],
+        ["KS p-value",       f"{report.ks_pvalue:.4f}"],
+        ["Shapiro–Wilk W",   f"{report.shapiro_stat:.4f}"],
+        ["Shapiro–Wilk p",   f"{report.shapiro_pvalue:.4f}"],
+        ["Normality",        "✓ Passed" if report.normality_passed else "✗ Failed"],
     ]
     table = ax_stats.table(
         cellText=rows,
         colLabels=["Statistic", "Value"],
-        loc="center",
+        colWidths=[0.63, 0.37],
         cellLoc="center",
+        bbox=[0.0, 0.0, 1.0, 1.0],
     )
     table.auto_set_font_size(False)
-    table.set_fontsize(11)
-    table.scale(1.2, 1.85)
+    table.set_fontsize(10.5)
     _style_table(table, report.normality_passed, last_row=len(rows))
 
     fig.suptitle(
         "Central Limit Theorem — Interactive Demonstration",
-        color="white", fontsize=17, fontweight="bold", y=0.95,
+        color="white", fontsize=17, fontweight="bold", y=0.96,
     )
 
     plt.savefig(save_path, dpi=150, bbox_inches="tight") if save_path else None

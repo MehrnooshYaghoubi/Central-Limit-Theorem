@@ -150,7 +150,7 @@ Every run prints a report to stdout:
 
 ## Sample Visualization
 
-![Sample Visualization](sample.png)
+![Sample Visualization](Figure_1.png)
 
 ---
 
